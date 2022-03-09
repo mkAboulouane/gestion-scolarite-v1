@@ -14,18 +14,15 @@ import java.util.List;
  *  wach darori n definiw un constructeur fles class
  *  fin nl9a l configuration ta3 spring security
  */
-//
+
 
 @Entity
-@Table(name = "Student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Student;
-    // not entred
-    @JoinColumn(name = "code_apoge", nullable = false, updatable = false,unique = true)
-    private String apoge = "E" + id_Student;
-    @JoinColumn(name = "cne", nullable = false,unique = true)
+    private Long id;
+    // reference
+    private String apoge = "E" + id;
     private String cne;
     private String sexe;
     private String name;
@@ -36,14 +33,12 @@ public class Student {
     private String city;
     private String country;
     private Boolean active=true;
-    private Date date_naissanse;
+    private Date date_Naissanse;
 
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
-    @JoinColumn(name = "filiere_id",nullable = false)
     private Filiere filiere;
 
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
-    @JoinColumn(name = "niveau_id",nullable = false)              // Verified
     private Niveau niveau;
 
     @JsonIgnore
@@ -67,11 +62,19 @@ public class Student {
         this.lastname = lastname;
         this.cne = cne;
         this.active = active;
-        this.date_naissanse = date_naissanse;
+        this.date_Naissanse = date_naissanse;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Student(Long id, String code_apoge, String sexe, String cne, String name, String lastnam, String phone, String mail, String address, String city, String country, Boolean isActive, Date date_naissanse) {
-        this.id_Student = id;
+        this.id = id;
         this.apoge = code_apoge;
         this.sexe = sexe;
         this.cne = cne;
@@ -82,20 +85,19 @@ public class Student {
         this.address = address;
         this.city = city;
         this.country = country;
-        this.active = active;
-        this.date_naissanse = date_naissanse;
+        this.date_Naissanse = date_naissanse;
     }
 
 
 
     public Long getId_Student() {
-        return id_Student;
+        return id;
     }
 
 //    public void setId_Inscription(Long id_Student) {
 
-    public void setId_Student(Long id_Student) {
-        this.id_Student = id_Student;
+    public void setId_Student(Long id) {
+        this.id = id;
     }
 
     public void setCne(String cne) {
@@ -142,7 +144,6 @@ public class Student {
         this.absence = absence;
     }
 
-    @Column(name = "code_apoge", unique = true, nullable = false, length = 45)
     public String getApoge() {
         return apoge;
     }
@@ -151,7 +152,6 @@ public class Student {
         this.apoge = apoge;
     }
 
-    @Column(name = "sexe", unique = false, length = 10)
     public String getSexe() {
         return sexe;
     }
@@ -160,7 +160,6 @@ public class Student {
         this.sexe = sexe;
     }
 
-    @Column(name = "name", unique = false, nullable = false, length = 45)
     public String getName() {
         return name;
     }
@@ -169,7 +168,6 @@ public class Student {
         this.name = name;
     }
 
-    @Column(name = "lastname", unique = false, nullable = false, length = 45)
     public String getLastname() {
         return lastname;
     }
@@ -178,7 +176,6 @@ public class Student {
         this.lastname = lastname;
     }
 
-    @Column(name = "phone", unique = true, length = 45)
     public String getPhone() {
         return phone;
     }
@@ -187,7 +184,6 @@ public class Student {
         this.phone = phone;
     }
 
-    @Column(name = "mail", unique = true, length = 45)
     public String getMail() {
         return mail;
     }
@@ -196,7 +192,6 @@ public class Student {
         this.mail = mail;
     }
 
-    @Column(name = "name", length = 45)
     public String getAddress() {
         return address;
     }
@@ -205,7 +200,6 @@ public class Student {
         this.address = address;
     }
 
-    @Column(name = "city", length = 45)
     public String getCity() {
         return city;
     }
@@ -214,7 +208,6 @@ public class Student {
         this.city = city;
     }
 
-    @Column(name = "country", length = 45)
     public String getCountry() {
         return country;
     }
@@ -223,33 +216,24 @@ public class Student {
         this.country = country;
     }
 
-    @Column(name = "status", length = 45)
-    public Boolean getActive() {
-        return active;
+
+
+    public Date getDate_Naissanse() {
+        return date_Naissanse;
     }
 
-    public void setActive(Boolean active) {
-        active = active;
+    public void setDate_Naissanse(Date date_Naissanse) {
+        this.date_Naissanse = date_Naissanse;
     }
 
-    @Column(name = "naissanse", length = 45)
-    public Date getDate_naissanse() {
-        return date_naissanse;
-    }
-
-    public void setDate_naissanse(Date date_naissanse) {
-        this.date_naissanse = date_naissanse;
-    }
-
-    @Column(name = "cne", length = 45, unique = true, nullable = false)
     public String getCne() {
         return cne;
     }
 
     @Override
     public String toString() {
-        return "Personne [idPersonne=" + id_Student + ", sexe=" + sexe + ", nom=" + name + ", prenom=" + lastname
-                + ", dateDeNaissance=" + date_naissanse + ", email=" + mail + ", adresse=" + address + ", tel=" + phone
+        return "Personne [idPersonne=" + id + ", sexe=" + sexe + ", nom=" + name + ", prenom=" + lastname
+                + ", dateDeNaissance=" + date_Naissanse + ", email=" + mail + ", adresse=" + address + ", tel=" + phone
                 + " ville=" + city + ", pays=" + country + "]";
     }
 }

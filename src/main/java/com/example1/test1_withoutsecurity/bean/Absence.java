@@ -7,9 +7,9 @@ import java.util.Date;
 public class Absence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_abs;
+    private Long id;
     //private String abs_reference = "A" + id_abs;
-    private Date date_absence;
+    private Date date_Absence;
     private boolean justife;
 
     @ManyToOne
@@ -18,10 +18,9 @@ public class Absence {
     @OneToOne
     private Matiere matiere;
 
-    public Absence(Long id_abs,Date date_absence, boolean justife, Student student, Matiere matiere) {
-        this.id_abs = id_abs;
-        //this.abs_reference = abs_reference;
-        this.date_absence = date_absence;
+    public Absence(Long id,Date date_Absence, boolean justife, Student student, Matiere matiere) {
+        this.id = id;
+        this.date_Absence = date_Absence;
         this.justife = justife;
         this.student = student;
         this.matiere = matiere;
@@ -32,30 +31,21 @@ public class Absence {
 
 
     public void setId_abs(Long id_abs) {
-        this.id_abs = id_abs;
+        this.id = id;
     }
 
-//    public String getAbs_reference() {
-//        return abs_reference;
-//    }
-//
-//    public void setAbs_reference(String abs_reference) {
-//        this.abs_reference = abs_reference;
-//    }
-
-
     public Long getId_abs() {
-        return id_abs;
+        return id;
     }
 
 
     @Temporal(TemporalType.DATE)
     public Date getDate_absence() {
-        return date_absence;
+        return date_Absence;
     }
 
     public void setDate_absence(Date date_absence) {
-        this.date_absence = date_absence;
+        this.date_Absence = date_Absence;
     }
 
     public boolean isJustife() {

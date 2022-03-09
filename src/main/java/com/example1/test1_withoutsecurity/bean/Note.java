@@ -4,12 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Result")
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Note;
-    //private String note_reference = "N" + id_Note;
+    private Long id;
+    //private String note_reference = "N" + id;
     private Double resultat;    ///
     private String remarque;
     private Date date_note;
@@ -39,12 +38,12 @@ algorithme de cryptage : crypt et decrypt
     @OneToOne// Verified
     private Matiere matiere;
 
-    public Long getId_Note() {
-        return id_Note;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_Note(Long id_Note) {
-        this.id_Note = id_Note;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getRemarque() {

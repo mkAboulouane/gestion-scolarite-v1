@@ -5,27 +5,22 @@ import javax.persistence.*;
 public class Matiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_matiere;
-    @JoinColumn(name = "matiere", nullable = false, updatable = false)
-    private String name_matiere;
+    private Long id;
+    private String name_Matiere;
 
     @ManyToOne                          // Verified
-    @JoinColumn(name="filliere_id",nullable = false)
     private Filiere filiere;
 
 
     @ManyToOne                          // New
-    @JoinColumn(name="niveau_id",nullable = false)
     private Niveau niveau;
 
 
 
     @OneToOne
-    @JoinColumn(name = "prof_id",nullable = false)      // Verified
     private Prof prof;
 
     @ManyToOne
-    @JoinColumn(name="departement_id",nullable = false)  // Verified
     private Departement departement;
 
 
@@ -36,11 +31,8 @@ public class Matiere {
     private Absence absence;
 
 
-
-
-
-    public void setId_matiere(Long id_matiere) {
-        this.id_matiere = id_matiere;
+    public void setId_Matiere(Long id) {
+        this.id = id;
     }
 
     public Prof getProf() {
@@ -77,26 +69,24 @@ public class Matiere {
 
 
 
-    public Matiere(Long id_matiere, String name_matiere, Filiere filiere) {
-        this.id_matiere = id_matiere;
-        this.name_matiere = name_matiere;
+    public Matiere(Long id, String name_matiere, Filiere filiere) {
+        this.id = id;
+        this.name_Matiere = name_matiere;
         this.filiere = filiere;
     }
 
     public Matiere() {
     }
-
-
-    public Long getId_matiere() {
-        return id_matiere;
+    public Long getId_Matiere() {
+        return id;
     }
 
     public String getName_matiere() {
-        return name_matiere;
+        return name_Matiere;
     }
 
     public void setName_matiere(String name_matiere) {
-        this.name_matiere = name_matiere;
+        this.name_Matiere = name_Matiere;
     }
 
     public Filiere getFiliere() {

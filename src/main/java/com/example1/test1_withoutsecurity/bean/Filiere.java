@@ -6,21 +6,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-//@Table(name = "filiere")
 public class Filiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_filiere;
-    @JoinColumn(name = "filliere", nullable = false, updatable = false)
-    private String nom_filiere;  // sir, ieea
-
-//
-//     @ManyToMany            //(mappedBy = "filieres")         // Verified
-//     private List<Prof> prof1;
+    private Long id;
+    private String nom_Filiere;  // sir, ieea
 
     @JsonIgnore
     @OneToMany(mappedBy = "filiere")        // Verified
-
     private List<Student> students;
 
     @JsonIgnore
@@ -31,24 +24,20 @@ public class Filiere {
     @OneToMany(mappedBy = "filiere")     // Verified
     private List<Niveau> niveaux;
 
-
-
     public Filiere() {
     }
 
-    @Column(name = "id")
     public Long getId() {
-        return id_filiere;
+        return id;
     }
 
-    @Column(name = "nom_filiere", length = 45, nullable = false)
-    public String getNom_filiere() {
-        return nom_filiere;
+    public String getNom_Filiere() {
+        return nom_Filiere;
     }
 
 
-    public void setNom_filiere(String nom_filiere) {
-        this.nom_filiere = nom_filiere;
+    public void setNom_filiere(String nom_Filiere) {
+        this.nom_Filiere = nom_Filiere;
     }
 
     public List<Student> getStudents() {
@@ -60,7 +49,7 @@ public class Filiere {
     }
 
     public void setId(Long id) {
-        this.id_filiere = id_filiere;
+        this.id = id;
     }
 
     public List<Matiere> getMatieres() {

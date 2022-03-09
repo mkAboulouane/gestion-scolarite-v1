@@ -10,11 +10,10 @@ public class Niveau {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Niveau;
+    private Long id;
     private String semestre; // s5 s1 ....
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="filliere_id",nullable = false)   // Verified
     private Filiere filiere;
 
     @JsonIgnore
@@ -39,11 +38,11 @@ public class Niveau {
     }
 
     public Long getId_Niveau() {
-        return id_Niveau;
+        return id;
     }
 
-    public void setId_Niveau(Long id_Niveau) {
-        this.id_Niveau = id_Niveau;
+    public void setId_Niveau(Long id) {
+        this.id = id;
     }
 
     public Filiere getFiliere() {
