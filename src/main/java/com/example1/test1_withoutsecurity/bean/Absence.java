@@ -13,11 +13,9 @@ public class Absence {
     private boolean justife;
 
     @ManyToOne
-    @JoinColumn(name="student_id",nullable = false) // Verified
     private Student student;
 
     @OneToOne
-    @JoinColumn(name="matiere_id",nullable = false) // Verified
     private Matiere matiere;
 
     public Absence(Long id_abs,Date date_absence, boolean justife, Student student, Matiere matiere) {

@@ -11,9 +11,7 @@ public class Departement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_departement;
 
-    @JoinColumn(name = "departement", nullable = false, updatable = false)
     private String nom_departement;
-
     @JsonIgnore
     @OneToMany(mappedBy = "departement")                    // Verified
     private List<Matiere> matieres;

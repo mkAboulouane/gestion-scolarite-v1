@@ -8,13 +8,10 @@ import java.util.Date;
 public class Prof {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "id_prof", nullable = false, updatable = false)
     private Long id_prof;
     private String name;
     private String last_name;
-    @JoinColumn(name = "cin", nullable = false, updatable = false)
     private String cin;
-    @JoinColumn(name = "Matricule", nullable = false, updatable = false)
     private String matricule;
     private String diplom;
     private Date date_start_work;
@@ -24,7 +21,6 @@ public class Prof {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="departement_id",nullable = false)       // Verified
     private Departement departement;
 
 
@@ -104,7 +100,6 @@ public class Prof {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "date_start", length = 45)
     public Date getDate_start_work() {
         return date_start_work;
     }

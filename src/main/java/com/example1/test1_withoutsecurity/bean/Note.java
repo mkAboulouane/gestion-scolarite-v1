@@ -33,15 +33,12 @@ algorithme de cryptage : crypt et decrypt
     */
 
     @ManyToOne
-    @JoinColumn(name = "student_id")     // Verified
     private Student student;
 
 
     @OneToOne// Verified
-    @JoinColumn(name = "matiere_id")
     private Matiere matiere;
 
-    @JoinColumn(name = "Id", nullable = false)
     public Long getId_Note() {
         return id_Note;
     }
@@ -100,13 +97,5 @@ algorithme de cryptage : crypt et decrypt
     public void setMatiere(Matiere matiere) {
         this.matiere = matiere;
     }
-
-//    public String getNote_reference() {
-//        return note_reference;
-//    }
-//
-//    public void setNote_reference(String note_reference) {
-//        this.note_reference = note_reference;
-//    }
 
 }
