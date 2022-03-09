@@ -1,5 +1,7 @@
 package com.example1.test1_withoutsecurity.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,10 +12,15 @@ public class Prof {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+//    @Email
+    private String email;
     private String last_Name;
+    // reference
     private String cin;
+    // reference
     private String matricule;
     private String diplom;
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Start_Work;
 
 
@@ -21,7 +28,7 @@ public class Prof {
     private Departement departement;
 
 
-    @OneToOne(mappedBy = "prof")
+    @OneToOne
     private Matiere matiere;
 
 
@@ -73,6 +80,30 @@ public class Prof {
 
     public String getMatricule() {
         return matricule;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Departement getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(Departement departement) {
+        this.departement = departement;
+    }
+
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
     }
 
     public void setMatricule(String matricule) {

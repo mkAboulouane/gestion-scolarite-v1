@@ -11,20 +11,29 @@ public class Niveau {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    // reference
     private String semestre; // s5 s1 ....
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Filiere filiere;
+//
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "niveau")         // Verified
+//    private List<Student> students;
+//
+//
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "niveau")               // New
+//    private List<Matiere> matieress;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "niveau")         // Verified
-    private List<Student> students;
 
+    public Long getId() {
+        return id;
+    }
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "niveau")               // New
-    private List<Matiere> matieress;
-
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Niveau() {
     }
@@ -52,12 +61,13 @@ public class Niveau {
     public void setFiliere(Filiere filiere) {
         this.filiere = filiere;
     }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
 }
+//
+//    public List<Student> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(List<Student> students) {
+//        this.students = students;
+//    }
+//}

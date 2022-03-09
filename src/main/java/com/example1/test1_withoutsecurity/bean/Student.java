@@ -1,6 +1,8 @@
 package com.example1.test1_withoutsecurity.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +35,7 @@ public class Student {
     private String city;
     private String country;
     private Boolean active=true;
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Naissanse;
 
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
@@ -41,27 +44,15 @@ public class Student {
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
     private Niveau niveau;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "student")     // Verified
-    private Inscription inscription;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "student")  //(mappedBy = "student")     // Verified
-    private List<Note> notes;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "student")    // Verified
-    private List<Absence> absence;
 
     public Student() {
     }
 
-    public Student(String apoge, String name, String lastname, Boolean isactive, String cne, Date date_naissanse) {
+    public Student(String apoge, String name, String lastname, String cne, Date date_naissanse) {
         this.apoge = apoge;
         this.name = name;
         this.lastname = lastname;
         this.cne = cne;
-        this.active = active;
         this.date_Naissanse = date_naissanse;
     }
 
@@ -120,29 +111,6 @@ public class Student {
         this.niveau = niveau;
     }
 
-    public Inscription getInscription() {
-        return inscription;
-    }
-
-    public void setInscription(Inscription inscription) {
-        this.inscription = inscription;
-    }
-
-    public List<Note> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
-    }
-
-    public List<Absence> getAbsence() {
-        return absence;
-    }
-
-    public void setAbsence(List<Absence> absence) {
-        this.absence = absence;
-    }
 
     public String getApoge() {
         return apoge;
@@ -235,5 +203,13 @@ public class Student {
         return "Personne [idPersonne=" + id + ", sexe=" + sexe + ", nom=" + name + ", prenom=" + lastname
                 + ", dateDeNaissance=" + date_Naissanse + ", email=" + mail + ", adresse=" + address + ", tel=" + phone
                 + " ville=" + city + ", pays=" + country + "]";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

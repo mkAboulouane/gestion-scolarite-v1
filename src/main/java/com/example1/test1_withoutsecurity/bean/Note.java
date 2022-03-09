@@ -1,5 +1,7 @@
 package com.example1.test1_withoutsecurity.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,10 +10,13 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    // reference
+    private String reference;
     //private String note_reference = "N" + id;
     private Double resultat;    ///
     private String remarque;
-    private Date date_note;
+    @DateTimeFormat(pattern="yyyy-mm-dd")
+    private Date date_Note;
     /*
 
 Inscription : nheydha bnesba l prof
@@ -31,12 +36,59 @@ algorithme de cryptage : crypt et decrypt
 
     */
 
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Date getDate_Note() {
+        return date_Note;
+    }
+
+    public void setDate_Note(Date date_Note) {
+        this.date_Note = date_Note;
+    }
+
+    public Filiere getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
+
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
+    }
+
     @ManyToOne
     private Student student;
 
 
-    @OneToOne// Verified
+    @ManyToOne
+    private Filiere filiere;
+
+    @ManyToOne
+    private Niveau niveau;
+
+    @ManyToOne
     private Matiere matiere;
+
 
     public Long getId() {
         return id;
@@ -57,20 +109,20 @@ algorithme de cryptage : crypt et decrypt
     public Note() {
     }
 
-    public Note(Double resultat, Student student, Matiere matiere, Date date_note) {
+    public Note(Double resultat, Student student, Date date_Note) {
         this.resultat = resultat;
         this.student = student;
-        this.matiere = matiere;
-        this.date_note = date_note;
+//        this.matiere = matiere;
+        this.date_Note = date_Note;
     }
 
     @Temporal(TemporalType.DATE)
     public Date getDate_note() {
-        return date_note;
+        return date_Note;
     }
 
-    public void setDate_note(Date date_note) {
-        this.date_note = date_note;
+    public void setDate_note(Date date_Note) {
+        this.date_Note = date_Note;
     }
 
     public Double getResultat() {
@@ -89,12 +141,12 @@ algorithme de cryptage : crypt et decrypt
         this.student = student;
     }
 
-    public Matiere getMatiere() {
-        return matiere;
-    }
-
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
-    }
+//    public Matiere getMatiere() {
+//        return matiere;
+//    }
+//
+//    public void setMatiere(Matiere matiere) {
+//        this.matiere = matiere;
+//    }
 
 }

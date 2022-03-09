@@ -10,20 +10,20 @@ import java.util.List;
 
 @Repository
 public interface StudentDao extends JpaRepository<Student, Long> {
-    public List<Student> findAll();
-
-    public Student findByApoge(String apoge);
-
-    @Query("SELECT student from Student student where student.niveau.id_Niveau=:id_niveau and student.filiere.id=:id_fil")
-    public List<Student> findSameNiveauAndFilliere(@Param("id_niveau") Long id_niveau,@Param("id_fil") Long id_fil);
-
-    @Query("SELECT student from Student student where student.niveau.id_Niveau=:id_niveau")
-    public List<Student> findSameNiveau(@Param("id_niveau") Long id_niveau);
-
-    @Query("SELECT student from Student student where student.filiere.id=:id_fil")
-    public List<Student> findSameFilliere(@Param("id_fil") Long id_fil);
-
-    public void deleteByApoge(String apoge);
-
-    Student findByCne(String cne);
+//    public List<Student> findAll();
+//
+//    public Student findByApoge(String apoge);
+//
+//    @Query("SELECT student from Student student where student.niveau.id_Niveau=:id_niveau and student.filiere.id=:id_fil")
+//    public List<Student> findSameNiveauAndFilliere(@Param("id_niveau") Long id_niveau,@Param("id_fil") Long id_fil);
+//
+//    @Query("SELECT student from Student student where student.niveau.id_Niveau=:id_niveau")
+//    public List<Student> findSameNiveau(@Param("id_niveau") Long id_niveau);
+//
+//    @Query("SELECT student from Student student where student.filiere.id=:id_fil")
+//    public List<Student> findSameFilliere(@Param("id_fil") Long id_fil);
+//
+//    public void deleteByApoge(String apoge);
+//
+//    Student findByCne(String cne);
 }

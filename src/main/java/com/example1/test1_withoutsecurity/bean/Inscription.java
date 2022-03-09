@@ -2,6 +2,7 @@ package com.example1.test1_withoutsecurity.bean;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,13 +15,11 @@ public class Inscription {
     private Long id;
 
     @CreatedDate
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Inscription;
 
     @OneToOne                       // Verified
     private Student student;
-
-    @OneToOne                       // Verified
-    private Prof prof;
 
     @Temporal(TemporalType.DATE)
     public Date getDate_Inscription() {
@@ -34,9 +33,8 @@ public class Inscription {
     public Inscription() {
     }
 
-    public Inscription(Student student, Prof prof) {
+    public Inscription(Student student) {
         this.student = student;
-        this.prof = prof;
     }
 
     public Student getStudent() {
@@ -47,11 +45,20 @@ public class Inscription {
         this.student = student;
     }
 
-    public Prof getProf() {
-        return prof;
+    public Long getId() {
+        return id;
     }
 
-    public void setProf(Prof prof) {
-        this.prof = prof;
+    public void setId(Long id) {
+        this.id = id;
     }
 }
+
+//    public Prof getProf() {
+//        return prof;
+//    }
+//
+//    public void setProf(Prof prof) {
+//        this.prof = prof;
+//    }
+//}
