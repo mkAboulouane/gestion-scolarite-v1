@@ -26,7 +26,7 @@ public class Prof {
     @ManyToOne(cascade = CascadeType.ALL)
     private Departement departement;
 
-    @OneToOne
+    @ManyToOne
     private Matiere matiere;
 
 

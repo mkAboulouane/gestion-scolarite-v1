@@ -15,9 +15,6 @@ public class Matiere {
     @ManyToOne                          // New
     private Niveau niveau;
 
-    @OneToOne
-    private Prof prof;
-
     @ManyToOne
     private Departement departement;
 
@@ -25,12 +22,11 @@ public class Matiere {
         return filiere;
     }
 
-    public Matiere(Long id, String name_Matiere, Filiere filiere, Niveau niveau, Prof prof, Departement departement) {
+    public Matiere(Long id, String name_Matiere, Filiere filiere, Niveau niveau, Departement departement) {
         this.id = id;
         this.name_Matiere = name_Matiere;
         this.filiere = filiere;
         this.niveau = niveau;
-        this.prof = prof;
         this.departement = departement;
     }
 
@@ -49,14 +45,14 @@ public class Matiere {
     public void setId_Matiere(Long id) {
         this.id = id;
     }
-
-    public Prof getProf() {
-        return prof;
-    }
-
-    public void setProf(Prof prof) {
-        this.prof = prof;
-    }
+//
+//    public Prof getProf() {
+//        return prof;
+//    }
+//
+//    public void setProf(Prof prof) {
+//        this.prof = prof;
+//    }
 
     public Departement getDepartement() {
         return departement;

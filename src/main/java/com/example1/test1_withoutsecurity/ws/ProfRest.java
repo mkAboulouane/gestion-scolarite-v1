@@ -26,10 +26,10 @@ public class ProfRest {
         return profService.findByCin(cin);
     }
 
-    @GetMapping("/")
-    public List<Prof> findByDepartProf(@PathVariable String nom_dep) {
-        return profService.findByDepartProf(nom_dep);
-    }
+//    @GetMapping("/")
+//    public List<Prof> findByDepartProf(@PathVariable String nom_dep) {
+//        return profService.findByDepartProf(nom_dep);
+//    }
 
     @GetMapping("/")
     public List<Prof> findAll() {

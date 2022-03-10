@@ -13,8 +13,18 @@ public class Seance {
     @DateTimeFormat(pattern="yyyy-mm-dd--hh")
     private Date date_Seance;
 
+    private String reference;
+
     @ManyToOne
     private Matiere matiere;
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
     public Seance() {
     }
@@ -22,6 +32,13 @@ public class Seance {
     public Seance(Long id, Date date_Seance, Matiere matiere) {
         this.id = id;
         this.date_Seance = date_Seance;
+        this.matiere = matiere;
+    }
+
+    public Seance(Long id, Date date_Seance, String reference, Matiere matiere) {
+        this.id = id;
+        this.date_Seance = date_Seance;
+        this.reference = reference;
         this.matiere = matiere;
     }
 
