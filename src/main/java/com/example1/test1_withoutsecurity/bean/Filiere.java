@@ -11,7 +11,7 @@ public class Filiere {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom_Filiere;  // sir, ieea
+    private String nomfiliere;  // sir, ieea
 
 
     public Filiere() {
@@ -21,20 +21,21 @@ public class Filiere {
         return id;
     }
 
-    public String getNom_Filiere() {
-        return nom_Filiere;
-    }
 
-
-    public void setNom_filiere(String nom_Filiere) {
-        this.nom_Filiere = nom_Filiere;
+    public Filiere(Long id, String nomfiliere) {
+        this.id = id;
+        this.nomfiliere = nomfiliere;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNom_Filiere(String nom_Filiere) {
-        this.nom_Filiere = nom_Filiere;
+    public String getNomfiliere() {
+        return nomfiliere;
+    }
+
+    public void setNomfiliere(String nomfiliere) {
+        this.nomfiliere = nomfiliere;
     }
 }

@@ -17,8 +17,14 @@ public class Note {
     private String remarque;
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Note;
-    /*
 
+    @ManyToOne
+    private Student student;
+
+    @ManyToOne
+    private Matiere matiere;
+
+    /*
 Inscription : nheydha bnesba l prof
 id__ : id
 last_name : last_Name
@@ -33,7 +39,6 @@ java : algorthme de hashage sha1,md9
 paswword : compared to hash
 algorithme hash : ne re arrive pas
 algorithme de cryptage : crypt et decrypt
-
     */
 
     public String getReference() {
@@ -51,22 +56,22 @@ algorithme de cryptage : crypt et decrypt
     public void setDate_Note(Date date_Note) {
         this.date_Note = date_Note;
     }
-
-    public Filiere getFiliere() {
-        return filiere;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
-    }
-
-    public Niveau getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(Niveau niveau) {
-        this.niveau = niveau;
-    }
+//
+//    public Filiere getFiliere() {
+//        return filiere;
+//    }
+//
+//    public void setFiliere(Filiere filiere) {
+//        this.filiere = filiere;
+//    }
+//
+//    public Niveau getNiveau() {
+//        return niveau;
+//    }
+//
+//    public void setNiveau(Niveau niveau) {
+//        this.niveau = niveau;
+//    }
 
     public Matiere getMatiere() {
         return matiere;
@@ -75,20 +80,6 @@ algorithme de cryptage : crypt et decrypt
     public void setMatiere(Matiere matiere) {
         this.matiere = matiere;
     }
-
-    @ManyToOne
-    private Student student;
-
-
-    @ManyToOne
-    private Filiere filiere;
-
-    @ManyToOne
-    private Niveau niveau;
-
-    @ManyToOne
-    private Matiere matiere;
-
 
     public Long getId() {
         return id;
@@ -141,7 +132,7 @@ algorithme de cryptage : crypt et decrypt
         this.student = student;
     }
 
-//    public Matiere getMatiere() {
+    //    public Matiere getMatiere() {
 //        return matiere;
 //    }
 //

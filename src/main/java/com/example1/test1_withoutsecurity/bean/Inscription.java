@@ -21,6 +21,8 @@ public class Inscription {
     @OneToOne                       // Verified
     private Student student;
 
+
+
     @Temporal(TemporalType.DATE)
     public Date getDate_Inscription() {
         return date_Inscription;

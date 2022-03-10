@@ -68,12 +68,13 @@ public class Matiere {
 
     public Matiere() {
     }
-    public Long getId_Matiere() {
-        return id;
+
+    public String getName_Matiere() {
+        return name_Matiere;
     }
 
-    public String getName_matiere() {
-        return name_Matiere;
+    public void setName_Matiere(String name_Matiere) {
+        this.name_Matiere = name_Matiere;
     }
 
     public void setName_matiere(String name_matiere) {
@@ -89,12 +90,5 @@ public class Matiere {
         this.id = id;
     }
 
-    public String getName_Matiere() {
-        return name_Matiere;
-    }
-
-    public void setName_Matiere(String name_Matiere) {
-        this.name_Matiere = name_Matiere;
-    }
 
 }

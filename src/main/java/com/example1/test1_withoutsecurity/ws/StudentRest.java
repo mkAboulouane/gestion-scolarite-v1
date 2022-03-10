@@ -43,17 +43,10 @@ public class StudentRest {
 
     @Autowired
     private StudentService studentService;
-//
-//    @DeleteMapping("/{apoge}/")
+
+//    @DeleteMapping("/delete/{apoge}/")
 //    public int deleteByApoge(@PathVariable String apoge) {
 //       return studentService.deleteByApoge(apoge);
 //    }
-
-//
-//    @GetMapping("/id/{id}/")
-//    public Optional<Student> findById1(@PathVariable Long id) {
-//        return studentService.findById1(id);
-//    }
-//
 
 }

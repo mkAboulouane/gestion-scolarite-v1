@@ -29,22 +29,6 @@ public class Departement {
         this.nom_Depart = nom_Depart;
     }
 
-    public Long getId_departement() {
-        return id;
-    }
-
-    public void setId_departement(Long id_departement) {
-        this.id = id;
-    }
-
-    public String getNom_departement() {
-        return nom_Depart;
-    }
-
-    public void setNom_departement(String nom_depart) {
-        this.nom_Depart = nom_Depart;
-    }
-
 //    public List<Matiere> getMatieres() {
 //        return matieres;
 //    }

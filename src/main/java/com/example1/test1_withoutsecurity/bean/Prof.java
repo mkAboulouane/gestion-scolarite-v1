@@ -23,14 +23,11 @@ public class Prof {
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Start_Work;
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     private Departement departement;
 
-
     @OneToOne
     private Matiere matiere;
-
 
 
     public Prof() {
