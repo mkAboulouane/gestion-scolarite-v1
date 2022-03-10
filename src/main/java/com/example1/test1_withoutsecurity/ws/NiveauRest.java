@@ -25,6 +25,7 @@ public class NiveauRest {
     public int save(@RequestBody Niveau niveau) {
         return niveauService.save(niveau);
     }
+
     @Autowired
     private NiveauService niveauService;
 }

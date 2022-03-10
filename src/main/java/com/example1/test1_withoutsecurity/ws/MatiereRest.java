@@ -15,10 +15,12 @@ public class MatiereRest {
     public String save(@RequestBody Matiere matiere) {
         return matiereService.save(matiere);
     }
+
     @GetMapping("/{nom}/")
     public Matiere findByMatiereNom(@PathVariable String nom) {
         return matiereService.findByMatiereNom(nom);
     }
+
     @GetMapping("/")
     public List<Matiere> findAll() {
         return matiereService.findAll();

@@ -18,6 +18,17 @@ public class Matiere {
     @ManyToOne
     private Departement departement;
 
+    @OneToOne
+    private Prof prof;
+
+    public Prof getProf() {
+        return prof;
+    }
+
+    public void setProf(Prof prof) {
+        this.prof = prof;
+    }
+
     public Filiere getFiliere() {
         return filiere;
     }
@@ -45,14 +56,6 @@ public class Matiere {
     public void setId_Matiere(Long id) {
         this.id = id;
     }
-//
-//    public Prof getProf() {
-//        return prof;
-//    }
-//
-//    public void setProf(Prof prof) {
-//        this.prof = prof;
-//    }
 
     public Departement getDepartement() {
         return departement;

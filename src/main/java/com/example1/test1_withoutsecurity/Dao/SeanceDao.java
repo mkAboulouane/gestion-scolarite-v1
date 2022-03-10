@@ -10,5 +10,6 @@ import java.util.List;
 
 public interface SeanceDao extends JpaRepository<Seance,Long> {
     Seance findByReference(String reference);
-    List<Seance> findByDate(Date date_Seance);
+//    List<Seance> findByDate(Date date_Seance);
+
 }

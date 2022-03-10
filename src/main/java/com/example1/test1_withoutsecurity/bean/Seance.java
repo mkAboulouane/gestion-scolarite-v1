@@ -14,15 +14,10 @@ public class Seance {
     private Date date_Seance;
     private String reference;
 
-
-    private String reference;
-
     @ManyToOne
     private Matiere matiere;
 
-    public String getReference() {
-        return reference;
-    }
+
 
     public void setReference(String reference) {
         this.reference = reference;
@@ -44,6 +39,10 @@ public class Seance {
         this.matiere = matiere;
     }
 
+    public String getReference() {
+        return reference;
+    }
+
     public Long getId() {
         return id;
     }
@@ -52,13 +51,6 @@ public class Seance {
         this.id = id;
     }
 
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
 
     public Date getDate_Seance() {
         return date_Seance;

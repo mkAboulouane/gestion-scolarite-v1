@@ -34,9 +34,9 @@ public class SeanceService {
         return seanceDao.findByReference(reference);
     }
 
-    public List<Seance> findByDate(Date date_Seance) {
-        return seanceDao.findByDate(date_Seance);
-    }
+//    public List<Seance> findByDate(Date date_Seance) {
+//        return seanceDao.findByDate(date_Seance);
+//    }
 
     public List<Seance> findAll() {
         return seanceDao.findAll();
