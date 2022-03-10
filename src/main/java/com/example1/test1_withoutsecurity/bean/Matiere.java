@@ -66,22 +66,6 @@ public class Matiere {
         this.departement = departement;
     }
 
-//    public Note getNote() {
-//        return note;
-//    }
-//
-//    public void setNote(Note note) {
-//        this.note = note;
-//    }
-//
-//    public Absence getAbsence() {
-//        return absence;
-//    }
-//
-//    public void setAbsence(Absence absence) {
-//        this.absence = absence;
-//    }
-
     public Matiere() {
     }
     public Long getId_Matiere() {

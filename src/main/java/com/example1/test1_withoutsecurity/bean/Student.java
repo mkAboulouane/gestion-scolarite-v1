@@ -1,11 +1,9 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 /*
  *  Wach save method dkia w 3lach fach tandirha l object deja existant tadir lih duplicate
@@ -24,7 +22,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     // reference
-    private String apoge = "E" + id;
+    private String apoge;
     private String cne;
     private String sexe;
     private String name;
@@ -35,6 +33,7 @@ public class Student {
     private String city;
     private String country;
     private Boolean active=true;
+
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Naissanse;
 
@@ -46,6 +45,14 @@ public class Student {
 
 
     public Student() {
+    }
+
+    public Filiere getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
     }
 
     public Student(String apoge, String name, String lastname, String cne, Date date_naissanse) {
@@ -80,28 +87,17 @@ public class Student {
     }
 
 
-
-    public Long getId_Student() {
-        return id;
-    }
-
-//    public void setId_Inscription(Long id_Student) {
-
-    public void setId_Student(Long id) {
-        this.id = id;
-    }
-
     public void setCne(String cne) {
         this.cne = cne;
     }
 
-    public Filiere getFiliere() {
-        return filiere;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
-    }
+//    public Filiere getFiliere() {
+//        return filiere;
+//    }
+//
+//    public void setFiliere(Filiere filiere) {
+//        this.filiere = filiere;
+//    }
 
     public Niveau getNiveau() {
         return niveau;

@@ -14,9 +14,18 @@ public class Niveau {
     // reference
     private String semestre; // s5 s1 ....
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Filiere filiere;
+//    public Filiere getFiliere() {
+//        return filiere;
+//    }
 //
+//    public void setFiliere(Filiere filiere) {
+//        this.filiere = filiere;
+//    }
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private Filiere filiere;
+
+    //
 //    @JsonIgnore
 //    @OneToMany(mappedBy = "niveau")         // Verified
 //    private List<Student> students;
@@ -46,21 +55,13 @@ public class Niveau {
         this.semestre = semestre;
     }
 
-    public Long getId_Niveau() {
-        return id;
-    }
-
-    public void setId_Niveau(Long id) {
-        this.id = id;
-    }
-
-    public Filiere getFiliere() {
-        return filiere;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
-    }
+//    public Filiere getFiliere() {
+//        return filiere;
+//    }
+//
+//    public void setFiliere(Filiere filiere) {
+//        this.filiere = filiere;
+//    }
 }
 //
 //    public List<Student> getStudents() {
