@@ -1,14 +1,17 @@
 package com.example1.test1_withoutsecurity.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Absence {
+public class Absence implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
+
     private Date date_Absence;
     private boolean justife;
 

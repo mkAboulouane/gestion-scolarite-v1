@@ -15,18 +15,21 @@ public class StudentService {
 
     public String save(Student student) {
         if(student.getCne()==null) return "cne n'est pas insere !";
-        else if(student.getApoge()==null) return "code apoge pas insere !";
-        else if (findByApoge(student.getApoge()) != null) return "code Apoges deja existe !";
+//        else if(student.getApoge()==null) return "code apoge pas insere !";
+//        else if (findByApoge(student.getApoge()) != null) return "code Apoges deja existe !";
         else if (findByCne(student.getCne()) != null) return "cne deja existe!";
         else if (filiereService.findByNom_filiere(student.getFiliere().getNomfiliere()) == null)  return "filiere n'existe pas!";
         else if (niveauService.findBySemestre(student.getNiveau().getSemestre()) == null) return "niveau n'existe pas!";
         else {
             student.setNiveau(niveauService.findBySemestre(student.getNiveau().getSemestre()));
             student.setFiliere(filiereService.findByNom_filiere(student.getFiliere().getNomfiliere()));
+            Long i = studentDao.CodeApogeIncrement();
+            student.setApoge("E"+(1+i));
             studentDao.save(student);
-            return "Succes";
+            return "Succes, code apoge : "+student.getApoge()+" avec id: "+student.getId();
         }
     }
+
 
     public List<Student> findAll() {
         return studentDao.findAll();
@@ -48,6 +51,35 @@ public class StudentService {
         return studentDao.findSameFilliere(nom_Fil);
     }
 
+
+
+//
+//    public void update(Student student)
+//    {
+//       Student entity = findByApoge(student.getApoge());
+//       if(entity!=null) { student.setId(entity.getId());
+//     studentDao.save(student);
+//       }
+//    }
+
+
+
+
+    public Student findByCne(String cne) {
+        return studentDao.findByCne(cne);
+    }
+
+    @Autowired
+    private NiveauService niveauService;
+
+    @Autowired
+    private StudentDao studentDao;
+
+    @Autowired
+    private FilliereService filiereService;
+
+}
+
 //    @Transactional
 //    public int deleteByApoge(String apoge) {
 //        int result_niveau = niveauService.deleteBySemestre(findByApoge(apoge).getNiveau().getSemestre());
@@ -68,22 +100,3 @@ public class StudentService {
 //            return 1;
 //        }
 //    }
-    public void update(Student student)
-    {
-     studentDao.save(student);
-    }
-
-    public Student findByCne(String cne) {
-        return studentDao.findByCne(cne);
-    }
-
-    @Autowired
-    private NiveauService niveauService;
-
-    @Autowired
-    private StudentDao studentDao;
-
-    @Autowired
-    private FilliereService filiereService;
-
-}

@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class SeanceService {
+
     @Autowired
     private SeanceDao seanceDao;
     @Autowired

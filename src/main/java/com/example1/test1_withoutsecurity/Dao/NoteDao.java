@@ -13,6 +13,9 @@ import java.util.List;
 public interface NoteDao extends JpaRepository<Note, Long> {
     List<Note> findByResultat(double resultat);
 
+    @Query("select note from Note note where note.reference=:reference")
+    Note findByReference(@Param("reference") String reference);
+
     @Query("select note from Note note where note.resultat<5 and note.matiere.name_Matiere=:mat")
     List<Note> findByNv(@Param("mat") String mat);
 

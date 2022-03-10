@@ -16,6 +16,11 @@ public class StudentRest {
         return studentService.save(student);
     }
 
+//    @PutMapping("/")
+//    public void update(@RequestBody Student student) {
+//        studentService.update(student);
+//    }
+
     @GetMapping("/")
     public List<Student> findAll() {
         return studentService.findAll();

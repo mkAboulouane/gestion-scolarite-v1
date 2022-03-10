@@ -3,6 +3,7 @@ package com.example1.test1_withoutsecurity.bean;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /*
@@ -17,11 +18,17 @@ import java.util.Date;
 
 
 @Entity
-public class Student {
+public class Student implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // reference
+
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long indice;
+
+//    reference
+    //@Column(unique = true)
     private String apoge;
     private String cne;
     private String sexe;
@@ -33,6 +40,14 @@ public class Student {
     private String city;
     private String country;
     private Boolean active=true;
+
+//    public Long getIndice() {
+//        return indice;
+//    }
+//
+//    public void setIndice(Long indice) {
+//        this.indice = indice;
+//    }
 
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Naissanse;

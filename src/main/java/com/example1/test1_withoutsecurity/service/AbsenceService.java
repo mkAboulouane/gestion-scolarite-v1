@@ -14,8 +14,9 @@ import java.util.List;
 public class AbsenceService {
 
    public String save(Absence absence) {
-       if (studentservice.findByApoge(absence.getStudent().getApoge())==null) return "student n existe pas";
-       else if(seanceService.findByReference(absence.getReference())==null) return "seance n existe pas";
+       if(absenceDao.findByReference(absence.getReference())!=null) return "Absence deja enregistre";
+      else if (studentservice.findByApoge(absence.getStudent().getApoge())==null) return "student n existe pas";
+       else if(seanceService.findByReference(absence.getSeance().getReference())==null) return "seance n existe pas";
        else
        {
         absence.setStudent(studentservice.findByApoge(absence.getStudent().getApoge()));
@@ -29,6 +30,10 @@ public class AbsenceService {
         return absenceDao.findParStudent(absence_stu, absence_mat);
     }
 
+    public Absence findByReference(String refrence) {
+        return absenceDao.findByReference(refrence);
+    }
+
     public List<Absence> findParSeance(String absence_sea) {
         return absenceDao.findParSeance(absence_sea);
     }
@@ -37,9 +42,9 @@ public class AbsenceService {
         return absenceDao.findAll();
     }
 
-    public Absence findAbsenceByReference(String reference) {
-        return absenceDao.findAbsenceByReference(reference);
-    }
+//    public Absence findAbsenceByReference(String reference) {
+//        return absenceDao.findAReference(reference);
+//    }
 
     @Autowired
     private AbsenceDao absenceDao;

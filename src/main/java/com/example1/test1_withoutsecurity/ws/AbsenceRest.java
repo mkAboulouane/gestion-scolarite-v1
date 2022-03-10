@@ -30,10 +30,10 @@ public class AbsenceRest {
         return absenceService.findAll();
     }
 
-    @GetMapping("/reference/{reference}")
-    public Absence findAbsenceByReference(String reference) {
-        return absenceService.findAbsenceByReference(reference);
-    }
+//    @GetMapping("/reference/{reference}")
+//    public Absence findAbsenceByReference(String reference) {
+//        return absenceService.findAbsenceByReference(reference);
+//    }
 
     @Autowired
     private AbsenceService absenceService;

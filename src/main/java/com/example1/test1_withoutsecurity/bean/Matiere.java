@@ -1,8 +1,10 @@
 package com.example1.test1_withoutsecurity.bean;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Matiere {
+public class Matiere implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -23,7 +23,12 @@ public interface StudentDao extends JpaRepository<Student, Long> {
     @Query("SELECT student from Student student where student.filiere.nomfiliere=:nom_Fil")
     public List<Student> findSameFilliere(@Param("nom_Fil") String nom_Fil);
 
-//    public int deleteByApoge(String apoge);
+    @Query("select max(student.id) from Student student")
+    public Long CodeApogeIncrement();
+
+
+
+
 
     Student findByCne(String cne);
 }

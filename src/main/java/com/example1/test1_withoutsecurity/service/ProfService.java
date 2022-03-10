@@ -14,21 +14,21 @@ public class ProfService {
     }
 
     public String save(Prof prof) {
-        if (prof.getCin() == null || prof.getMatricule() == null) {
-            return "inserer le cin ou matricule du prof";
-        } else if (profDao.findByCin(prof.getCin()) != null) {
+        if (prof.getCin() == null || prof.getMatricule() == null)
+            return "inserer le CIN ou MATRICULE du prof";
+         else if (profDao.findByCin(prof.getCin()) != null)
             return "prof CIN existe deja";
-        } else if (profDao.findByMatricule(prof.getMatricule()) != null) {
+          else if (profDao.findByMatricule(prof.getMatricule()) != null)
             return "prof MATRICULE existe deja";
-        } else if (departementService.findByNomDepartement(prof.getDepartement().getNom_Depart()) == null) {
-            return "departement n'existe pas";
-        } else if (matiereService.findByMatiereNom(prof.getMatiere().getName_Matiere()) != null)
-            return ",om de matiere deja existe";
+          else if (matiereService.findByMatiereNom(prof.getMatiere().getName_Matiere())==null)
+            return "cette MATIERE n'existe pas";
+         else if (departementService.findByNomDepartement(prof.getDepartement().getNom_Depart()) == null)
+            return "DEPARTEMENT n'existe pas";
         else {
             prof.setMatiere(matiereService.findByMatiereNom(prof.getMatiere().getName_Matiere()));
             prof.setDepartement(departementService.findByNomDepartement(prof.getDepartement().getNom_Depart()));
             profDao.save(prof);
-            return "saveProf";
+            return "Succes";
         }
 
     }

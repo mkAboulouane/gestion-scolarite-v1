@@ -15,7 +15,7 @@ public class SeanceRest {
     private SeanceService seanceService;
 
     @PostMapping("/")
-    public String save(@PathVariable Seance seance) {
+    public String save(@RequestBody Seance seance) {
         return seanceService.save(seance);
     }
 

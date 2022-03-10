@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/gestion")
+@RequestMapping("/api/gestion/note")
 public class NoteRest {
 
     @Autowired

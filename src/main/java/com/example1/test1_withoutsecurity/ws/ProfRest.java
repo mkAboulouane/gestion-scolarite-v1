@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1/prof")
+@RequestMapping( "/api/v1/prof")
 public class ProfRest {
     @PostMapping("/")
     public String save(@RequestBody Prof prof) {
@@ -25,11 +25,6 @@ public class ProfRest {
     public Prof findByCin(@PathVariable String cin) {
         return profService.findByCin(cin);
     }
-
-//    @GetMapping("/")
-//    public List<Prof> findByDepartProf(@PathVariable String nom_dep) {
-//        return profService.findByDepartProf(nom_dep);
-//    }
 
     @GetMapping("/")
     public List<Prof> findAll() {

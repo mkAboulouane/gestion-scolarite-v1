@@ -21,6 +21,7 @@ public class DepartementService {
     {
         if(findByNomDepartement(departement.getNom_Depart())!=null)
             return "departement deja existe";
+        else if(departement.getNom_Depart()==null) return "entrer le nom de departement";
         else {
          departementDao.save(departement);
          return "Succes";
