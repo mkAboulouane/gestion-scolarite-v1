@@ -10,8 +10,10 @@ public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @DateTimeFormat(pattern="yyyy-mm-dd--hh")
+    @DateTimeFormat(pattern = "yyyy-mm-dd--hh")
     private Date date_Seance;
+    private String reference;
+
 
     private String reference;
 
@@ -48,6 +50,14 @@ public class Seance {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Date getDate_Seance() {

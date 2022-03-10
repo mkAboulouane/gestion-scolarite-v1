@@ -8,6 +8,7 @@ import org.springframework.stereotype .Repository;
 
 @Repository
 public interface DepartementDao extends JpaRepository<Departement,Long> {
+
     @Query("select departement from Departement departement where departement.nom_Depart=:nom_depart")
     Departement findByNomDepartement(@Param("nom_depart") String nom_depart);
 
