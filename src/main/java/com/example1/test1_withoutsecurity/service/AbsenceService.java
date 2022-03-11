@@ -15,7 +15,7 @@ public class AbsenceService {
 
    public String save(Absence absence) {
        if(absenceDao.findByReference(absence.getReference())!=null) return "Absence deja enregistre";
-      else if (studentservice.findByApoge(absence.getStudent().getApoge())==null) return "student n existe pas";
+       else if (studentservice.findByApoge(absence.getStudent().getApoge())==null) return "student n existe pas";
        else if(seanceService.findByReference(absence.getSeance().getReference())==null) return "seance n existe pas";
        else
        {

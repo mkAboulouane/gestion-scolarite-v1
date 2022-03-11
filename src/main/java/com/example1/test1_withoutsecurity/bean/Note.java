@@ -1,12 +1,10 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity

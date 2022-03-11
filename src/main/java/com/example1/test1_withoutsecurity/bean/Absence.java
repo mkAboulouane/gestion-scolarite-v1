@@ -1,5 +1,7 @@
 package com.example1.test1_withoutsecurity.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class Absence implements Serializable {
     private Long id;
     private String reference;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date date_Absence;
     private boolean justife;
 

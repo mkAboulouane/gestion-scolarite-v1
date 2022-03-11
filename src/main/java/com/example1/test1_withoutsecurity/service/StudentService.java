@@ -53,12 +53,11 @@ public class StudentService {
 
 
 
-//
+
 //    public void update(Student student)
 //    {
-//       Student entity = findByApoge(student.getApoge());
-//       if(entity!=null) { student.setId(entity.getId());
-//     studentDao.save(student);
+//       if(findByApoge(student.getApoge())!=null) {
+//                studentDao.save(student);
 //       }
 //    }
 
