@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface InscriptionDao extends JpaRepository<Inscription,Long> {
     @Query("select s from Inscription s where s.student=:x ")
-    public List<Inscription> findByStudent(@Param("x") Student student);
+     List<Inscription> findByStudent(@Param("x") Student student);
 }

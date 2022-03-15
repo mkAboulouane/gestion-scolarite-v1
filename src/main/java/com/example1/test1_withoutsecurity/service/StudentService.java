@@ -14,19 +14,20 @@ import java.util.List;
 public class StudentService {
 
     public String save(Student student) {
-        if(student.getCne()==null) return "cne n'est pas insere !";
+        if (student.getCne() == null) return "cne n'est pas insere !";
 //        else if(student.getApoge()==null) return "code apoge pas insere !";
 //        else if (findByApoge(student.getApoge()) != null) return "code Apoges deja existe !";
         else if (findByCne(student.getCne()) != null) return "cne deja existe!";
-        else if (filiereService.findByNom_filiere(student.getFiliere().getNomfiliere()) == null)  return "filiere n'existe pas!";
+        else if (filiereService.findByNom_filiere(student.getFiliere().getNomfiliere()) == null)
+            return "filiere n'existe pas!";
         else if (niveauService.findBySemestre(student.getNiveau().getSemestre()) == null) return "niveau n'existe pas!";
         else {
             student.setNiveau(niveauService.findBySemestre(student.getNiveau().getSemestre()));
             student.setFiliere(filiereService.findByNom_filiere(student.getFiliere().getNomfiliere()));
             Long i = studentDao.CodeApogeIncrement();
-            student.setApoge("E"+(1+i));
+            student.setApoge("E" + (1 + i));
             studentDao.save(student);
-            return "Succes, code apoge : "+student.getApoge()+" avec id: "+student.getId();
+            return "Succes, code apoge : " + student.getApoge() + " avec id: " + student.getId();
         }
     }
 
@@ -52,16 +53,12 @@ public class StudentService {
     }
 
 
-
-
 //    public void update(Student student)
 //    {
 //       if(findByApoge(student.getApoge())!=null) {
 //                studentDao.save(student);
 //       }
 //    }
-
-
 
 
     public Student findByCne(String cne) {
