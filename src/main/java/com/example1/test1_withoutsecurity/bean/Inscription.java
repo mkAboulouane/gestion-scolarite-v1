@@ -5,13 +5,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @EnableJpaAuditing
 @Entity
-public class Inscription implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Inscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +18,7 @@ public class Inscription implements Serializable {
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Inscription;
 
-    @OneToOne                       // Verified
+    @ManyToOne(cascade = CascadeType.ALL)                      // Verified
     private Student student;
 
 
@@ -36,6 +34,7 @@ public class Inscription implements Serializable {
 
     public Inscription() {
     }
+
 
     public Inscription(Student student) {
         this.student = student;

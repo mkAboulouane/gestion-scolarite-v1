@@ -3,8 +3,8 @@ package com.example1.test1_withoutsecurity.bean;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /*
  *  Wach save method dkia w 3lach fach tandirha l object deja existant tadir lih duplicate
@@ -18,17 +18,11 @@ import java.util.Date;
 
 
 @Entity
-public class Student implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long indice;
-
-//    reference
-    //@Column(unique = true)
+    // reference
     private String apoge;
     private String cne;
     private String sexe;
@@ -41,14 +35,6 @@ public class Student implements Serializable {
     private String country;
     private Boolean active=true;
 
-//    public Long getIndice() {
-//        return indice;
-//    }
-//
-//    public void setIndice(Long indice) {
-//        this.indice = indice;
-//    }
-
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Naissanse;
 
@@ -58,8 +44,18 @@ public class Student implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
     private Niveau niveau;
 
+    @OneToMany(mappedBy = "student")
+    List<Inscription> inscriptions;
 
     public Student() {
+    }
+
+    public List<Inscription> getInscriptions() {
+        return inscriptions;
+    }
+
+    public void setInscriptions(List<Inscription> inscriptions) {
+        this.inscriptions = inscriptions;
     }
 
     public Filiere getFiliere() {
