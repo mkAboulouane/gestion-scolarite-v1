@@ -82,7 +82,7 @@ public class Student {
         this.active = active;
     }
 
-    public Student(Long id, String code_apoge, String sexe, String cne, String name, String lastnam, String phone, String mail, String address, String city, String country, Boolean isActive, Date date_naissanse) {
+    public Student(Long id, String code_apoge, String sexe, String cne, String name, String lastname, String phone, String mail, String address, String city, String country, Boolean isActive, Date date_naissanse) {
         this.id = id;
         this.apoge = code_apoge;
         this.sexe = sexe;
