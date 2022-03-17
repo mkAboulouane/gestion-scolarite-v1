@@ -24,11 +24,13 @@ public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Transient  // Not seen in the database
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long indice;
+
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Long indice;
 
-//    reference
-    //@Column(unique = true)
     private String apoge;
     private String cne;
     private String sexe;
@@ -39,7 +41,7 @@ public class Student implements Serializable {
     private String address;
     private String city;
     private String country;
-    private Boolean active=true;
+    private Boolean active = true;
 
 //    public Long getIndice() {
 //        return indice;
@@ -49,7 +51,7 @@ public class Student implements Serializable {
 //        this.indice = indice;
 //    }
 
-    @DateTimeFormat(pattern="yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date date_Naissanse;
 
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
@@ -62,28 +64,12 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Filiere getFiliere() {
-        return filiere;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
-    }
-
     public Student(String apoge, String name, String lastname, String cne, Date date_naissanse) {
         this.apoge = apoge;
         this.name = name;
         this.lastname = lastname;
         this.cne = cne;
         this.date_Naissanse = date_naissanse;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 
     public Student(Long id, String code_apoge, String sexe, String cne, String name, String lastnam, String phone, String mail, String address, String city, String country, Boolean isActive, Date date_naissanse) {
@@ -101,9 +87,24 @@ public class Student implements Serializable {
         this.date_Naissanse = date_naissanse;
     }
 
+    public Filiere getFiliere() {
+        return filiere;
+    }
 
-    public void setCne(String cne) {
-        this.cne = cne;
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
     }
 
 //    public Filiere getFiliere() {
@@ -114,14 +115,9 @@ public class Student implements Serializable {
 //        this.filiere = filiere;
 //    }
 
-    public Niveau getNiveau() {
-        return niveau;
-    }
-
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
-
 
     public String getApoge() {
         return apoge;
@@ -195,8 +191,6 @@ public class Student implements Serializable {
         this.country = country;
     }
 
-
-
     public Date getDate_Naissanse() {
         return date_Naissanse;
     }
@@ -207,6 +201,10 @@ public class Student implements Serializable {
 
     public String getCne() {
         return cne;
+    }
+
+    public void setCne(String cne) {
+        this.cne = cne;
     }
 
     @Override

@@ -1,10 +1,7 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 public class Absence implements Serializable {
@@ -12,23 +9,19 @@ public class Absence implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String reference;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date date_Absence;
+    private String reference;
     private boolean justife;
 
     @ManyToOne
     private Student student;
-
     @ManyToOne
     private Seance seance;
 
 
-    public Absence(Long id, String reference, Date date_Absence, boolean justife, Student student, Seance seance) {
+    public Absence(Long id, String reference, boolean justife, Student student, Seance seance) {
         this.id = id;
         this.reference = reference;
-        this.date_Absence = date_Absence;
         this.justife = justife;
         this.student = student;
         this.seance = seance;
@@ -45,22 +38,12 @@ public class Absence implements Serializable {
         this.seance = seance;
     }
 
-    public void setId_abs(Long id_abs) {
-        this.id = id;
-    }
-
     public Long getId_abs() {
         return id;
     }
 
-
-    @Temporal(TemporalType.DATE)
-    public Date getDate_absence() {
-        return date_Absence;
-    }
-
-    public void setDate_absence(Date date_absence) {
-        this.date_Absence = date_Absence;
+    public void setId_abs(Long id_abs) {
+        this.id = id;
     }
 
     public boolean isJustife() {
@@ -80,8 +63,6 @@ public class Absence implements Serializable {
         this.student = student;
     }
 
-
-
     public Long getId() {
         return id;
     }
@@ -98,12 +79,5 @@ public class Absence implements Serializable {
         this.reference = reference;
     }
 
-    public Date getDate_Absence() {
-        return date_Absence;
-    }
-
-    public void setDate_Absence(Date date_Absence) {
-        this.date_Absence = date_Absence;
-    }
 
 }

@@ -1,10 +1,10 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 public class Filiere implements Serializable {
@@ -19,14 +19,13 @@ public class Filiere implements Serializable {
     public Filiere() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-
     public Filiere(Long id, String nomfiliere) {
         this.id = id;
         this.nomfiliere = nomfiliere;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {

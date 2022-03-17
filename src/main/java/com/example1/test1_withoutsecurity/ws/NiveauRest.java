@@ -11,6 +11,9 @@ import java.util.List;
 @RequestMapping("/api/gestion/niveau")
 public class NiveauRest {
 
+    @Autowired
+    private NiveauService niveauService;
+
     @GetMapping("/semestre/{semestre}")
     public Niveau findBySemestre(@PathVariable String semestre) {
         return niveauService.findBySemestre(semestre);
@@ -25,7 +28,4 @@ public class NiveauRest {
     public int save(@RequestBody Niveau niveau) {
         return niveauService.save(niveau);
     }
-
-    @Autowired
-    private NiveauService niveauService;
 }

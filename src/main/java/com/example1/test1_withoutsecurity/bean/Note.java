@@ -13,16 +13,14 @@ public class Note implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // reference
     private String reference;
-    //private String note_reference = "N" + id;
-    private Double resultat;    ///
+    private Double resultat;
     private String remarque;
+
+
     @CreatedDate
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm")
-    @DateTimeFormat(pattern="yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date date_Note;
-//    private LocalDateTime date_Note;
 
     @ManyToOne
     private Student student;
@@ -47,6 +45,15 @@ algorithme hash : ne re arrive pas
 algorithme de cryptage : crypt et decrypt
     */
 
+    public Note() {
+    }
+
+    public Note(Double resultat, Student student, Date date_Note) {
+        this.resultat = resultat;
+        this.student = student;
+        this.date_Note = date_Note;
+    }
+
     public String getReference() {
         return reference;
     }
@@ -62,22 +69,6 @@ algorithme de cryptage : crypt et decrypt
     public void setDate_Note(Date date_Note) {
         this.date_Note = date_Note;
     }
-//
-//    public Filiere getFiliere() {
-//        return filiere;
-//    }
-//
-//    public void setFiliere(Filiere filiere) {
-//        this.filiere = filiere;
-//    }
-//
-//    public Niveau getNiveau() {
-//        return niveau;
-//    }
-//
-//    public void setNiveau(Niveau niveau) {
-//        this.niveau = niveau;
-//    }
 
     public Matiere getMatiere() {
         return matiere;
@@ -101,16 +92,6 @@ algorithme de cryptage : crypt et decrypt
 
     public void setRemarque(String remarque) {
         this.remarque = remarque;
-    }
-
-    public Note() {
-    }
-
-    public Note(Double resultat, Student student, Date date_Note) {
-        this.resultat = resultat;
-        this.student = student;
-//        this.matiere = matiere;
-        this.date_Note = date_Note;
     }
 
     @Temporal(TemporalType.DATE)
@@ -137,13 +118,5 @@ algorithme de cryptage : crypt et decrypt
     public void setStudent(Student student) {
         this.student = student;
     }
-
-    //    public Matiere getMatiere() {
-//        return matiere;
-//    }
-//
-//    public void setMatiere(Matiere matiere) {
-//        this.matiere = matiere;
-//    }
 
 }

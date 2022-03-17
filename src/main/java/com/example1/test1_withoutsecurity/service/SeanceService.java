@@ -17,15 +17,28 @@ public class SeanceService {
     @Autowired
     private MatiereService matiereService;
 
-    public String save(Seance seance){
-        Matiere matiere=matiereService.findByMatiereNom(seance.getMatiere().getName_Matiere()) ;
-        if(findByReference(seance.getReference())!=null){
+    public List<Seance> findSeanceInDate(Date date) {
+        return seanceDao.findSeanceInDate(date);
+    }
+
+    public List<Seance> findSeanceInSalle(String salle) {
+        return seanceDao.findSeanceInSalle(salle);
+    }
+
+    public String save(Seance seance) {
+        Matiere matiere = matiereService.findByMatiereNom(seance.getMatiere().getName_Matiere());
+        if (findByReference(seance.getReference()) != null) {
             return "reference deja existe";
-        }
-        else if(matiere==null){
+        } else if (seanceDao.findByDateAndSalle(seance.getDate_Seance(), seance.getSalle(), seance.getHeure()) != null)
+            return "salle deja ocupe on ce date ;) Chercher une autre salle";
+        else if (matiere == null) {
             return "aucune matiere trouvé";
-        }else{
+        } else {
             seance.setMatiere(matiere);
+            Long i = seanceDao.SeanceReferenceIncrement();
+//            seance.setDate_Seance(new Date());
+            if (i == null) i = 0L;
+            seance.setReference("S" + (1 + i));
             seanceDao.save(seance);
             return "Succes";
         }

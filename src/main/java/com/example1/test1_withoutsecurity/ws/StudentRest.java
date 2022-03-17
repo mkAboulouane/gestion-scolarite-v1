@@ -1,25 +1,28 @@
 package com.example1.test1_withoutsecurity.ws;
+
 import com.example1.test1_withoutsecurity.bean.Student;
 import com.example1.test1_withoutsecurity.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;              //Absence + Prof + Niveau : khalil
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/gestion/student")
 public class StudentRest {
 
-    @PostMapping("/")
-    public String save(@RequestBody Student student) {
-        return studentService.save(student);
-    }
+    @Autowired
+    private StudentService studentService;
 
 //    @PutMapping("/")
 //    public void update(@RequestBody Student student) {
 //        studentService.update(student);
 //    }
+
+    @PostMapping("/")
+    public String save(@RequestBody Student student) {
+        return studentService.save(student);
+    }
 
     @GetMapping("/")
     public List<Student> findAll() {
@@ -32,7 +35,7 @@ public class StudentRest {
     }
 
     @GetMapping("/niveau/{id_niveau}/id_fil/{id_fil}")
-    public List<Student> findSameNiveauAndFilliere(@PathVariable String id_niveau,@PathVariable String id_fil) {
+    public List<Student> findSameNiveauAndFilliere(@PathVariable String id_niveau, @PathVariable String id_fil) {
         return studentService.findSameNiveauAndFilliere(id_niveau, id_fil);
     }
 
@@ -45,9 +48,6 @@ public class StudentRest {
     public List<Student> findSameFilliere(@PathVariable String nom_fil) {
         return studentService.findSameFilliere(nom_fil);
     }
-
-    @Autowired
-    private StudentService studentService;
 
 //    @DeleteMapping("/delete/{apoge}/")
 //    public int deleteByApoge(@PathVariable String apoge) {

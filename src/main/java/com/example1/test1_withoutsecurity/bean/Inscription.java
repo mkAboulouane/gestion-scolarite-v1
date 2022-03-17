@@ -1,8 +1,6 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,26 +13,23 @@ public class Inscription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //    @CreatedDate
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @DateTimeFormat(pattern="yyyy-mm-dd")
+//    @Temporal(TemporalType.DATE)
 
-    @CreatedDate
-    @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date date_Inscription;
 
     @OneToOne                       // Verified
     private Student student;
 
-
-
-    @Temporal(TemporalType.DATE)
-    public Date getDate_Inscription() {
-        return date_Inscription;
-    }
-
-    public void setDate_Inscription(Date date_Inscription) {
-        this.date_Inscription = date_Inscription;
-    }
-
     public Inscription() {
+    }
+
+    public Inscription(Long id, Date date_Inscription, Student student) {
+        this.id = id;
+        this.date_Inscription = date_Inscription;
+        this.student = student;
     }
 
     public Inscription(Student student) {
@@ -56,13 +51,12 @@ public class Inscription implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-}
 
-//    public Prof getProf() {
-//        return prof;
-//    }
-//
-//    public void setProf(Prof prof) {
-//        this.prof = prof;
-//    }
-//}
+    public Date getDate_Inscription() {
+        return date_Inscription;
+    }
+
+    public void setDate_Inscription(Date date_Inscription) {
+        this.date_Inscription = date_Inscription;
+    }
+}

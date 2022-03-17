@@ -3,14 +3,16 @@ package com.example1.test1_withoutsecurity.ws;
 import com.example1.test1_withoutsecurity.bean.Prof;
 import com.example1.test1_withoutsecurity.service.ProfService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping( "/api/v1/prof")
+@RequestMapping("/api/v1/prof")
 public class ProfRest {
+    @Autowired
+    private ProfService profService;
+
     @PostMapping("/")
     public String save(@RequestBody Prof prof) {
         return profService.save(prof);
@@ -30,8 +32,5 @@ public class ProfRest {
     public List<Prof> findAll() {
         return profService.findAll();
     }
-
-    @Autowired
-    private ProfService profService;
 
 }

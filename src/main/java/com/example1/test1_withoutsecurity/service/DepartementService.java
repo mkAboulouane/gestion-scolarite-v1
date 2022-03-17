@@ -17,14 +17,13 @@ public class DepartementService {
         return departementDao.findByNomDepartement(nom_depart);
     }
 
-    public String save(Departement departement)
-    {
-        if(findByNomDepartement(departement.getNom_Depart())!=null)
+    public String save(Departement departement) {
+        if (findByNomDepartement(departement.getNom_Depart()) != null)
             return "departement deja existe";
-        else if(departement.getNom_Depart()==null) return "entrer le nom de departement";
+        else if (departement.getNom_Depart() == null) return "entrer le nom de departement";
         else {
-         departementDao.save(departement);
-         return "Succes";
+            departementDao.save(departement);
+            return "Succes";
         }
     }
 

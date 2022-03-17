@@ -14,6 +14,16 @@ public class SeanceRest {
     @Autowired
     private SeanceService seanceService;
 
+    @GetMapping("/date/{date}")
+    public List<Seance> findSeanceInDate(@PathVariable Date date) {
+        return seanceService.findSeanceInDate(date);
+    }
+
+    @GetMapping("/salle/{salle}")
+    public List<Seance> findSeanceInSalle(@PathVariable String salle) {
+        return seanceService.findSeanceInSalle(salle);
+    }
+
     @PostMapping("/")
     public String save(@RequestBody Seance seance) {
         return seanceService.save(seance);
@@ -33,7 +43,6 @@ public class SeanceRest {
     public List<Seance> findAll() {
         return seanceService.findAll();
     }
-
 
 
 }

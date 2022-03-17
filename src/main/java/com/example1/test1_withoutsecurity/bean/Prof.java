@@ -14,7 +14,7 @@ public class Prof implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    @Email
+    //    @Email
     private String email;
     private String last_Name;
     // reference
@@ -23,14 +23,11 @@ public class Prof implements Serializable {
     private String matricule;
     private String diplom;
 
-    @DateTimeFormat(pattern="yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date date_Start_Work;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Departement departement;
-
-    @ManyToOne
-    private Matiere matiere;
 
 
     public Prof() {
@@ -82,6 +79,10 @@ public class Prof implements Serializable {
         return matricule;
     }
 
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -96,18 +97,6 @@ public class Prof implements Serializable {
 
     public void setDepartement(Departement departement) {
         this.departement = departement;
-    }
-
-    public Matiere getMatiere() {
-        return matiere;
-    }
-
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
-    }
-
-    public void setMatricule(String matricule) {
-        this.matricule = matricule;
     }
 
     public String getDiplom() {

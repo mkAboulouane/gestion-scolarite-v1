@@ -11,6 +11,9 @@ import java.util.List;
 @RequestMapping("/api/gestion/matiere")
 public class MatiereRest {
 
+    @Autowired
+    private MatiereService matiereService;
+
     @PostMapping("/")
     public String save(@RequestBody Matiere matiere) {
         return matiereService.save(matiere);
@@ -21,11 +24,13 @@ public class MatiereRest {
         return matiereService.findByMatiereNom(nom);
     }
 
+    @GetMapping("/findmatiere/{nom_fil}/{nom_semestre}")
+    public List<String> findMatiereInFiliereAndNiveau(@PathVariable String nom_fil, @PathVariable String nom_semestre) {
+        return matiereService.findMatiereInFiliereAndNiveau(nom_fil, nom_semestre);
+    }
+
     @GetMapping("/")
     public List<Matiere> findAll() {
         return matiereService.findAll();
     }
-
-    @Autowired
-    private MatiereService matiereService;
 }

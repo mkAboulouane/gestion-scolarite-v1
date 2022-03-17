@@ -16,13 +16,9 @@ public class Seance implements Serializable {
     private Date date_Seance;
     private String reference;
     private String salle;
-
+    private int heure;
     @ManyToOne
     private Matiere matiere;
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
 
     public Seance() {
     }
@@ -35,8 +31,20 @@ public class Seance implements Serializable {
         this.matiere = matiere;
     }
 
+    public int getHeure() {
+        return heure;
+    }
+
+    public void setHeure(int heure) {
+        this.heure = heure;
+    }
+
     public String getReference() {
         return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public String getSalle() {

@@ -9,9 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ResultatDao extends JpaRepository<Resultat,Long> {
+public interface ResultatDao extends JpaRepository<Resultat, Long> {
 
     @Query("select note.resultat from Note note where note.student.apoge=:apoges and note.matiere.name_Matiere=:matiere")
-    public List<Double> getResultatByMatiere(@Param("apoges") String apoges,@Param("matiere") String matiere);
+    public List<Double> getResultatByMatiere(@Param("apoges") String apoges, @Param("matiere") String matiere);
+
+
+//    @Query("select resultat. from Resultat resultat where note.student.apoge=:apoges ")
+//    public List<Double> getMoyenneGeneralAsStudent(@Param("apoges") String apoges);
 
 }

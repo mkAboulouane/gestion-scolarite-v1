@@ -1,4 +1,5 @@
 package com.example1.test1_withoutsecurity.bean;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,7 +9,6 @@ public class Matiere implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // reference
     private String name_Matiere;
 
     @ManyToOne                          // Verified
@@ -20,19 +20,10 @@ public class Matiere implements Serializable {
     @ManyToOne
     private Departement departement;
 
-    @OneToOne
+    @ManyToOne
     private Prof prof;
 
-    public Prof getProf() {
-        return prof;
-    }
-
-    public void setProf(Prof prof) {
-        this.prof = prof;
-    }
-
-    public Filiere getFiliere() {
-        return filiere;
+    public Matiere() {
     }
 
     public Matiere(Long id, String name_Matiere, Filiere filiere, Niveau niveau, Departement departement) {
@@ -41,10 +32,6 @@ public class Matiere implements Serializable {
         this.filiere = filiere;
         this.niveau = niveau;
         this.departement = departement;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
     }
 
     public Niveau getNiveau() {
@@ -67,9 +54,6 @@ public class Matiere implements Serializable {
         this.departement = departement;
     }
 
-    public Matiere() {
-    }
-
     public String getName_Matiere() {
         return name_Matiere;
     }
@@ -77,11 +61,6 @@ public class Matiere implements Serializable {
     public void setName_Matiere(String name_Matiere) {
         this.name_Matiere = name_Matiere;
     }
-
-    public void setName_matiere(String name_matiere) {
-        this.name_Matiere = name_Matiere;
-    }
-
 
     public Long getId() {
         return id;
@@ -91,5 +70,19 @@ public class Matiere implements Serializable {
         this.id = id;
     }
 
+    public Prof getProf() {
+        return prof;
+    }
 
+    public void setProf(Prof prof) {
+        this.prof = prof;
+    }
+
+    public Filiere getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
 }
