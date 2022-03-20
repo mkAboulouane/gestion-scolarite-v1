@@ -3,13 +3,11 @@ package com.example1.test1_withoutsecurity.bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @EnableJpaAuditing
 @Entity
-public class Inscription implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Inscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +18,7 @@ public class Inscription implements Serializable {
 
     private Date date_Inscription;
 
-    @OneToOne                       // Verified
+    @ManyToOne(cascade = CascadeType.ALL)                      // Verified
     private Student student;
 
     public Inscription() {
@@ -31,6 +29,7 @@ public class Inscription implements Serializable {
         this.date_Inscription = date_Inscription;
         this.student = student;
     }
+
 
     public Inscription(Student student) {
         this.student = student;
