@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtil {
-
     public static boolean isWeekEnd(LocalDate ld) {
         DayOfWeek d = ld.getDayOfWeek();
         return d == DayOfWeek.SATURDAY || d == DayOfWeek.SUNDAY;
