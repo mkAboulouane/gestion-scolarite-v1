@@ -20,32 +20,28 @@ public class MatiereService {
     @Autowired
     private NiveauService niveauService;
 
-    public String save(Matiere matiere) {
+    public int save(Matiere matiere) {
         Matiere matieireEntity = findByMatiereNom(matiere.getName_Matiere());
         Filiere filiereEntity = filliereService.findByNom_filiere(matiere.getFiliere().getNomfiliere());
         Niveau niveauEntity = niveauService.findBySemestre(matiere.getNiveau().getSemestre());
 
-        Departement departementEntity = departementService.findByNomDepartement(matiere.getDepartement().getNom_Depart());
         Prof profEntity = profService.findByCin(matiere.getProf().getCin());
-        if (matiere == null) return "matiere n'existe pas";
-        else if (matiere.getName_Matiere() == null) return "inserer le nom du matiere";
-        else if (matiere.getFiliere().getNomfiliere() == null) return "inserer le nom du fiiliere";
-        else if (matiere.getDepartement().getNom_Depart() == null) return "inserer le nom de departement";
-        else if (matiere.getNiveau().getSemestre() == null) return "inserer la semestre du matiere";
-        else if (matiere.getProf().getCin() == null && matiere.getProf().getMatricule() == null)
-            return "inserer le cin ou la matricule de prof";
-        else if (matieireEntity != null) return "matiere deja existe";
-        else if (filiereEntity == null) return "filiere n'existe pas";
-        else if (niveauEntity == null) return "niveau n'existe pas";
-        else if (departementEntity == null) return "departement n'existe pas";
-        else if (profEntity == null) return "professeur n'existe pas";
+
+        if (matiere.getName_Matiere() == null) return -1;
+        else if (matiere.getFiliere().getNomfiliere() == null) return -2;
+        else if (matiere.getNiveau().getSemestre() == null) return -3;
+        else if (matiere.getProf().getCin() == null)
+            return -4;
+        else if (matieireEntity != null) return -5;
+        else if (filiereEntity == null) return -6;
+        else if (niveauEntity == null) return -7;
+        else if (profEntity == null) return -8;
         else {
             matiere.setFiliere(filiereEntity);
-            matiere.setDepartement(departementEntity);
             matiere.setNiveau(niveauEntity);
             matiere.setProf(profEntity);
             matiereDao.save(matiere);
-            return "Succes";
+            return 1;
         }
     }
 

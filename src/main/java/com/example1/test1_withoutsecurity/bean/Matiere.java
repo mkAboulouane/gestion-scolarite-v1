@@ -18,20 +18,16 @@ public class Matiere implements Serializable {
     private Niveau niveau;
 
     @ManyToOne
-    private Departement departement;
-
-    @ManyToOne
     private Prof prof;
 
     public Matiere() {
     }
 
-    public Matiere(Long id, String name_Matiere, Filiere filiere, Niveau niveau, Departement departement) {
+    public Matiere(Long id, String name_Matiere, Filiere filiere, Niveau niveau) {
         this.id = id;
         this.name_Matiere = name_Matiere;
         this.filiere = filiere;
         this.niveau = niveau;
-        this.departement = departement;
     }
 
     public Niveau getNiveau() {
@@ -46,13 +42,6 @@ public class Matiere implements Serializable {
         this.id = id;
     }
 
-    public Departement getDepartement() {
-        return departement;
-    }
-
-    public void setDepartement(Departement departement) {
-        this.departement = departement;
-    }
 
     public String getName_Matiere() {
         return name_Matiere;

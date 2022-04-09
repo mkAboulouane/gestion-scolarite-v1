@@ -15,7 +15,7 @@ public class NoteRest {
     private NoteService noteService;
 
     @PostMapping("/")
-    public String save(@RequestBody Note note) {
+    public int save(@RequestBody Note note) {
         return noteService.save(note);
     }
 

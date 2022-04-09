@@ -8,8 +8,9 @@ import java.util.List;
 
 @Repository
 public interface NiveauDao extends JpaRepository<Niveau, Long> {
-    public Niveau findBySemestre(String semestre);
 
-    public List<Niveau> findAll();
-//    int deleteBySemestre(String semetre);
+     Niveau findBySemestre(String semestre);
+
+     int deleteBySemestre(String semestre);
+
 }

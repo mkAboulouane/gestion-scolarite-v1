@@ -24,17 +24,15 @@ public class NoteService {
         return noteDao.findByReference(reference);
     }
 
-    public String save(Note note) {
+    public int save(Note note) {
         Student student = studentService.findByApoge(note.getStudent().getApoge());
         Matiere matiere = matiereService.findByMatiereNom(note.getMatiere().getName_Matiere());
 
-        if (note.getResultat() < 0 || note.getResultat() > 20) return "note doit etre entre 0 et 20";
-        else if (findByReference(note.getReference()) != null) return "reference deja existe";
+        if (note.getResultat() < 0 || note.getResultat() > 20) return -1;
+        else if (findByReference(note.getReference()) != null) return -2;
         else if (student == null)
-            return "student doesn't exist";
-        else if (matiere == null) return "matiere n'existe pas";
-//        else if (findByReference(note.getReference()).getStudent().getApoge().equals(note.getStudent().getApoge()))
-//            return "note pour ce etudiant deja existe dans la meme matiere";
+            return -3;
+        else if (matiere == null) return -4;
         else {
             Long i = noteDao.NoteReferenceIncrement();
             if (i == null) i = 0L;
@@ -43,7 +41,7 @@ public class NoteService {
             note.setMatiere(matiere);
             note.setStudent(student);
             noteDao.save(note);
-            return "done";
+            return 1;
         }
 
     }

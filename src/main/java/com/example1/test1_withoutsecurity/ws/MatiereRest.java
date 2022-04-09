@@ -15,7 +15,7 @@ public class MatiereRest {
     private MatiereService matiereService;
 
     @PostMapping("/")
-    public String save(@RequestBody Matiere matiere) {
+    public int save(@RequestBody Matiere matiere) {
         return matiereService.save(matiere);
     }
 

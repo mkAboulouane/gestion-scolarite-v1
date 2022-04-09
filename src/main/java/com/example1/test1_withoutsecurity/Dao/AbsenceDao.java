@@ -10,8 +10,6 @@ import java.util.List;
 
 @Repository
 public interface AbsenceDao extends JpaRepository<Absence, Long> {
-    public List<Absence> findAll();
-
     @Query("select max(absence.id) from Absence absence")
     Long absenceReferenceIncremet();
 
@@ -26,6 +24,11 @@ public interface AbsenceDao extends JpaRepository<Absence, Long> {
 
     @Query("select a from Absence a where a.seance.reference =: absence_sea")
     List<Absence> findParSeance(@Param("absence_sea") String absence_sea);
+
+
+//    @Query("select absence from Absence absence where absence.seance.reference =: ref and absence.student.apoge=: apoge ")
+//    Absence findStudentSeance(@Param("ref") String ref,@Param("apoge") String apoge);
+
 
 
 }

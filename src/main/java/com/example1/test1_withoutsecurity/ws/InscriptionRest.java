@@ -5,14 +5,22 @@ import com.example1.test1_withoutsecurity.service.InscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/gestion/incription")
 public class InscriptionRest {
+
+    @GetMapping("/")
+    public List<Inscription> findAll() {
+        return inscriptionService.findAll();
+    }
+
     @Autowired
     private InscriptionService inscriptionService;
 
     @PostMapping("/")
-    public String save(@RequestBody Inscription inscription) {
+    public int save(@RequestBody Inscription inscription) {
         return inscriptionService.save(inscription);
     }
 

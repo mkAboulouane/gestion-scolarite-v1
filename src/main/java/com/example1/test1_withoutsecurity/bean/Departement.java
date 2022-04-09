@@ -15,13 +15,7 @@ public class Departement implements Serializable {
     // reference
     private String nom_Depart;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "departement")                    // Verified
-//    private List<Matiere> matieres;
-
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "departement")
-//    private List<Prof> prof;
+    private String chef;
 
     public Departement() {
     }
@@ -31,6 +25,13 @@ public class Departement implements Serializable {
         this.nom_Depart = nom_Depart;
     }
 
+    public String getChef() {
+        return chef;
+    }
+
+    public void setChef(String chef) {
+        this.chef = chef;
+    }
 //    public List<Matiere> getMatieres() {
 //        return matieres;
 //    }

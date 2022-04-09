@@ -18,8 +18,8 @@ public class Note implements Serializable {
     private String remarque;
 
 
-    @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    @CreatedDate
+//    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date date_Note;
 
     @ManyToOne
@@ -27,23 +27,6 @@ public class Note implements Serializable {
 
     @ManyToOne
     private Matiere matiere;
-
-    /*
-Inscription : nheydha bnesba l prof
-id__ : id
-last_name : last_Name
-matiere relie to filliere
-note : matiere + filliere + student + nveau
-niveau : s1 ....
-seance : abcense + matiere + filliere +
-seance -> prof + matiere
-delete the column @
-bean : User () + Role ()
-java : algorthme de hashage sha1,md9
-paswword : compared to hash
-algorithme hash : ne re arrive pas
-algorithme de cryptage : crypt et decrypt
-    */
 
     public Note() {
     }

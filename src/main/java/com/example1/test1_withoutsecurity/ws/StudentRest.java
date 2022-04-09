@@ -14,13 +14,8 @@ public class StudentRest {
     @Autowired
     private StudentService studentService;
 
-//    @PutMapping("/")
-//    public void update(@RequestBody Student student) {
-//        studentService.update(student);
-//    }
-
     @PostMapping("/")
-    public String save(@RequestBody Student student) {
+    public int save(@RequestBody Student student) {
         return studentService.save(student);
     }
 

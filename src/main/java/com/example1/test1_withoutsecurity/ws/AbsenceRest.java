@@ -2,11 +2,13 @@ package com.example1.test1_withoutsecurity.ws;
 
 import com.example1.test1_withoutsecurity.bean.Absence;
 import com.example1.test1_withoutsecurity.service.AbsenceService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api("Absence ici")
 @RestController
 @RequestMapping("/api/gestion/absence")
 public class AbsenceRest {
@@ -14,7 +16,7 @@ public class AbsenceRest {
     private AbsenceService absenceService;
 
     @PostMapping("/")
-    public String save(@RequestBody Absence absence) {
+    public int save(@RequestBody Absence absence) {
         return absenceService.save(absence);
     }
 

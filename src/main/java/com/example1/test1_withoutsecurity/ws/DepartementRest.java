@@ -19,7 +19,7 @@ public class DepartementRest {
     }
 
     @PostMapping("/")
-    public String save(@RequestBody Departement departement) {
+    public int save(@RequestBody Departement departement) {
         return departementService.save(departement);
     }
 

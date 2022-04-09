@@ -1,6 +1,6 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,11 +12,13 @@ public class Seance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    //    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date date_Seance;
     private String reference;
     private String salle;
     private int heure;
+
     @ManyToOne
     private Matiere matiere;
 

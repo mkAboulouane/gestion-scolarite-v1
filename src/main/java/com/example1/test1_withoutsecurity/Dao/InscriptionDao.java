@@ -12,4 +12,5 @@ public interface InscriptionDao extends JpaRepository<Inscription, Long> {
     @Query("select inscription from Inscription inscription where inscription.student.apoge=:apoges")
     public Inscription findByInscription(@Param("apoges") String apoges);
 
+
 }

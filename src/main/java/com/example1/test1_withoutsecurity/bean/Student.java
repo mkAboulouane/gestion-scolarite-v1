@@ -1,6 +1,6 @@
 package com.example1.test1_withoutsecurity.bean;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,13 +24,6 @@ public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Transient  // Not seen in the database
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long indice;
-
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long indice;
-
     private String apoge;
     private String cne;
     private String sexe;
@@ -38,20 +31,14 @@ public class Student implements Serializable {
     private String lastname;
     private String phone;
     private String mail;
-    private String address;
     private String city;
     private String country;
     private Boolean active = true;
 
-//    public Long getIndice() {
-//        return indice;
-//    }
-//
-//    public void setIndice(Long indice) {
-//        this.indice = indice;
-//    }
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    //  @DateTimeFormat(pattern = "dd/mm/yyyy") doesn't work
+//    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date date_Naissanse;
 
     @ManyToOne(cascade = CascadeType.ALL)              // Verified
@@ -72,7 +59,7 @@ public class Student implements Serializable {
         this.date_Naissanse = date_naissanse;
     }
 
-    public Student(Long id, String code_apoge, String sexe, String cne, String name, String lastnam, String phone, String mail, String address, String city, String country, Boolean isActive, Date date_naissanse) {
+    public Student(Long id, String code_apoge, String sexe, String cne, String name, String lastnam, String phone, String mail, String city, String country, Boolean isActive, Date date_naissanse) {
         this.id = id;
         this.apoge = code_apoge;
         this.sexe = sexe;
@@ -81,7 +68,6 @@ public class Student implements Serializable {
         this.lastname = lastname;
         this.phone = phone;
         this.mail = mail;
-        this.address = address;
         this.city = city;
         this.country = country;
         this.date_Naissanse = date_naissanse;
@@ -167,13 +153,6 @@ public class Student implements Serializable {
         this.mail = mail;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getCity() {
         return city;
@@ -210,7 +189,7 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Personne [idPersonne=" + id + ", sexe=" + sexe + ", nom=" + name + ", prenom=" + lastname
-                + ", dateDeNaissance=" + date_Naissanse + ", email=" + mail + ", adresse=" + address + ", tel=" + phone
+                + ", dateDeNaissance=" + date_Naissanse + ", email=" + mail + "tel=" + phone
                 + " ville=" + city + ", pays=" + country + "]";
     }
 

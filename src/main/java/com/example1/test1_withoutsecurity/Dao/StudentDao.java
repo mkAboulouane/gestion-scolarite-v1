@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface StudentDao extends JpaRepository<Student, Long> {
-    public List<Student> findAll();
 
     public Student findByApoge(String apoge);
 
@@ -25,7 +24,6 @@ public interface StudentDao extends JpaRepository<Student, Long> {
 
     @Query("select max(student.id) from Student student")
     public Long CodeApogeIncrement();
-
 
     Student findByCne(String cne);
 }

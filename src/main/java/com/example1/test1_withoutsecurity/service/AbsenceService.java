@@ -5,12 +5,17 @@ import com.example1.test1_withoutsecurity.bean.Absence;
 import com.example1.test1_withoutsecurity.bean.Seance;
 import com.example1.test1_withoutsecurity.bean.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class AbsenceService {
+
+//    public Absence findStudentSeance(String absence_sea, String stu_apo) {
+//        return absenceDao.findStudentSeance(absence_sea, stu_apo);
+//    }
 
     @Autowired
     private AbsenceDao absenceDao;
@@ -21,12 +26,15 @@ public class AbsenceService {
     @Autowired
     private SeanceService seanceService;
 
-    public String save(Absence absence) {
+    public int save(Absence absence) {
         Student student = studentservice.findByApoge(absence.getStudent().getApoge());
         Seance seance = seanceService.findByReference(absence.getSeance().getReference());
-        if (absenceDao.findByReference(absence.getReference()) != null) return "Absence deja unregister";
-        else if (student == null) return "student n exist pas";
-        else if (seance == null) return "seance n exist pas";
+        Absence absence1 = absenceDao.findByReference(absence.getReference());
+//        Absence entity = findStudentSeance(absence.getSeance().getReference(),absence.getStudent().getApoge());
+        if (absence1 != null) return -1;
+        else if (student == null) return -2;
+        else if (seance == null) return -3;
+//        else if (entity!=null) return -4;
         else {
             Long i = absenceDao.absenceReferenceIncremet();
             if (i == null) i = 0L;
@@ -34,7 +42,7 @@ public class AbsenceService {
             absence.setStudent(student);
             absence.setSeance(seance);
             absenceDao.save(absence);
-            return "Success";
+            return 1;
         }
     }
 

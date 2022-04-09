@@ -9,11 +9,16 @@ import java.util.List;
 
 public interface ProfDao extends JpaRepository<Prof, Long> {
 
-    public Prof findByCin(String cin);
+    Prof findByCin(String cin);
 
     @Query("SELECT p FROM Prof p WHERE p.departement.nom_Depart =: nom_dep")
-    public List<Prof> findByDepartProf(@Param("nom_dep") String nom_dep);
+    List<Prof> findByDepartProf(@Param("nom_dep") String nom_dep);
 
     @Query("select prof from Prof prof where prof.matricule=:matr")
-    public Prof findByMatricule(@Param("matr") String matr);
+    Prof findByMatricule(@Param("matr") String matr);
+
+    @Query("select prof from Prof prof where prof.email=:email")
+    Prof findByEmail(@Param("email") String email);
+
+
 }

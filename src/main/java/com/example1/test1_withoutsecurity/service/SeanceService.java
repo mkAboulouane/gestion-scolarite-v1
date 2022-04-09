@@ -25,14 +25,15 @@ public class SeanceService {
         return seanceDao.findSeanceInSalle(salle);
     }
 
-    public String save(Seance seance) {
+    public int save(Seance seance) {
         Matiere matiere = matiereService.findByMatiereNom(seance.getMatiere().getName_Matiere());
+        Seance seance1 = seanceDao.findByDateAndSalle(seance.getDate_Seance(), seance.getSalle(), seance.getHeure());
         if (findByReference(seance.getReference()) != null) {
-            return "reference deja existe";
-        } else if (seanceDao.findByDateAndSalle(seance.getDate_Seance(), seance.getSalle(), seance.getHeure()) != null)
-            return "salle deja ocupe on ce date ;) Chercher une autre salle";
+            return -1;
+        } else if (seance1 != null)
+            return -2;
         else if (matiere == null) {
-            return "aucune matiere trouvé";
+            return -3;
         } else {
             seance.setMatiere(matiere);
             Long i = seanceDao.SeanceReferenceIncrement();
@@ -40,7 +41,7 @@ public class SeanceService {
             if (i == null) i = 0L;
             seance.setReference("S" + (1 + i));
             seanceDao.save(seance);
-            return "Succes";
+            return 1;
         }
     }
 

@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/prof")
+@RequestMapping("/api/gestion/prof")
 public class ProfRest {
     @Autowired
     private ProfService profService;
 
     @PostMapping("/")
-    public String save(@RequestBody Prof prof) {
+    public int save(@RequestBody Prof prof) {
         return profService.save(prof);
     }
 
     @PutMapping("/")
-    public String update(@RequestBody Prof prof) {
+    public int update(@RequestBody Prof prof) {
         return profService.update(prof);
     }
 

@@ -11,18 +11,15 @@ public class Inscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //    @CreatedDate
-//    @Temporal(TemporalType.TIMESTAMP)
-//    @DateTimeFormat(pattern="yyyy-mm-dd")
-//    @Temporal(TemporalType.DATE)
 
     private Date date_Inscription;
 
-    @ManyToOne(cascade = CascadeType.ALL)                      // Verified
+    @OneToOne(cascade = CascadeType.ALL)                      // Verified
     private Student student;
 
     public Inscription() {
     }
+
 
     public Inscription(Long id, Date date_Inscription, Student student) {
         this.id = id;
