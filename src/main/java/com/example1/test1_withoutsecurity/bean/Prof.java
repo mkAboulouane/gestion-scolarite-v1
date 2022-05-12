@@ -14,12 +14,11 @@ public class Prof implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    //    @Email
+
     private String email;
     private String last_Name;
-    // reference
+
     private String cin;
-    // reference
     private String matricule;
     private String diplom;
 

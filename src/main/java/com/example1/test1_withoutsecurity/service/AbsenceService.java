@@ -13,10 +13,6 @@ import java.util.List;
 @Service
 public class AbsenceService {
 
-//    public Absence findStudentSeance(String absence_sea, String stu_apo) {
-//        return absenceDao.findStudentSeance(absence_sea, stu_apo);
-//    }
-
     @Autowired
     private AbsenceDao absenceDao;
     @Autowired
